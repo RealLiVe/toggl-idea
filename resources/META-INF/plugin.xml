@@ -1,0 +1,54 @@
+<idea-plugin>
+    <id>rip.faith_in_humanity.time</id>
+    <name>Plugin display name here</name>
+    <version>1.0</version>
+    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+    <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+    </change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="145.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable instance="rip.faith_in_humanity.time.ui.TogglConfigurable"/>
+        <applicationService serviceInterface="rip.faith_in_humanity.time.ui.TogglConfigState"
+                            serviceImplementation="rip.faith_in_humanity.time.ui.TogglConfigState"/>
+    </extensions>
+
+    <actions>
+        <!--<group id="MyPlugin.SampleMenu" text="_Sample Menu" description="Sample menu">-->
+            <!--<add-to-group group-id="MainMenu" anchor="last"  />-->
+            <!--<action id="Myplugin.Textboxes" class="rip.faith_in_humanity.time.ui.TimeMenuHandler" text="Text _Boxes"-->
+                    <!--description="A test menu item" icon="TimePluginIcons.TRACK_BUTTON_IDLE" />-->
+        <!--</group>-->
+        <!-- Add your actions here -->
+        <action id="Myplugin.Textboxes" class="rip.faith_in_humanity.time.ui.TimeMenuHandler" text="Text _Boxes"
+                description="A test menu item" icon="TimePluginIcons.TRACK_BUTTON_IDLE">
+            <add-to-group group-id="MainToolBar" anchor="before" relative-to-action="ChooseRunConfiguration"/>
+        </action>
+    </actions>
+    <application-components>
+        <!-- Add your application components here -->
+        <component>
+            <implementation-class>rip.faith_in_humanity.time.TimeRegistration</implementation-class>
+        </component>
+        <!--<component>-->
+            <!--<implementation-class>rip.faith_in_humanity.time.ui.TimeConfigurator</implementation-class>-->
+        <!--</component>-->
+    </application-components>
+</idea-plugin>
