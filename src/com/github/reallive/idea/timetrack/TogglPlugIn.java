@@ -102,6 +102,10 @@ public class TogglPlugIn implements ApplicationComponent {
             TogglTime togglTime = toggl4J.get();
             if (togglTime != null) {
                 String summary = activeTask.getPresentableId();
+                if ("".equalsIgnoreCase(summary) || summary.equalsIgnoreCase("Default")
+                        || summary.equalsIgnoreCase("Default task")) {
+                    summary = "No ticket (" + project.getName() + ")";
+                }
                 if (!summary.equalsIgnoreCase(togglTime.getDescription())) {
                     logger.info("switch to " + summary);
                     toggl4J.startEntry(project.getName(), summary);
