@@ -26,6 +26,7 @@ public class Toggl4J {
 
     public synchronized TogglTime startEntry(String project, String description) {
         if(connected) {
+            refresh(false);
             if (!projectMap.containsKey(project)) {
                 createProject(project);
             }
@@ -107,7 +108,7 @@ public class Toggl4J {
                 if (projectMap.isEmpty() || lastProjectSync < System.currentTimeMillis() - (30 * 60 * 10000)) {
                     projectMap.clear();
                     Response<TogglProject[]> object = new SimpleIOTemplate(TOGGL_ENDPOINT + "/workspaces/" + workspaceId + "/projects")
-                            .addAuth("900a68a9edbcd857f739cdc176e6e34e", "api_token").send(TogglProject[].class);
+                            .addAuth(apiToken, "api_token").send(TogglProject[].class);
                     if (object != null && object.getCode() == 200 && object.getBody() != null) {
                         for (TogglProject project : object.getBody()) {
                             projectMap.put(project.getName(), project.getId());
