@@ -111,7 +111,12 @@ public class TogglPlugIn implements ApplicationComponent {
                     toggl4J.startEntry(project.getName(), summary);
                 }
             } else if (forceStart) {
-                toggl4J.startEntry(project.getName(), activeTask.getSummary());
+                String summary = activeTask.getPresentableId();
+                if ("".equalsIgnoreCase(summary) || summary.equalsIgnoreCase("Default")
+                        || summary.equalsIgnoreCase("Default task")) {
+                    summary = "No ticket (" + project.getName() + ")";
+                }
+                toggl4J.startEntry(project.getName(), summary);
             }
         }
         ApplicationManager.getApplication().invokeLater(() -> {
