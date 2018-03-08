@@ -1,17 +1,17 @@
 <idea-plugin>
-    <id>rip.faith_in_humanity.time</id>
-    <name>Plugin display name here</name>
-    <version>1.0</version>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <id>com.github.reallive.idea.timetrack</id>
+    <name>Toggl Time Tracker</name>
+    <version>0.1</version>
+    <!--<vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>-->
 
     <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+       Simple integration of Toggl Time Tracker. Automatically updates Toggl with current task.
     ]]></description>
 
     <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+    <ul>
+    <li>0.1 : Initial release. Start and stop of Toggl Time tracking with current project / task.
+      </ul>
     ]]>
     </change-notes>
 
@@ -20,35 +20,26 @@
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
-    <!-- uncomment to enable plugin in all products
-    <depends>com.intellij.modules.lang</depends>
-    -->
+
+    <!--<depends>com.intellij.modules.platform</depends>-->
+
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationConfigurable instance="rip.faith_in_humanity.time.ui.TogglConfigurable"/>
-        <applicationService serviceInterface="rip.faith_in_humanity.time.ui.TogglConfigState"
-                            serviceImplementation="rip.faith_in_humanity.time.ui.TogglConfigState"/>
+        <applicationConfigurable instance="com.github.reallive.idea.timetrack.ui.TogglConfigurable"/>
+        <applicationService serviceInterface="com.github.reallive.idea.timetrack.ui.TogglConfigState"
+                            serviceImplementation="com.github.reallive.idea.timetrack.ui.TogglConfigState"/>
     </extensions>
 
     <actions>
-        <!--<group id="MyPlugin.SampleMenu" text="_Sample Menu" description="Sample menu">-->
-            <!--<add-to-group group-id="MainMenu" anchor="last"  />-->
-            <!--<action id="Myplugin.Textboxes" class="rip.faith_in_humanity.time.ui.TimeMenuHandler" text="Text _Boxes"-->
-                    <!--description="A test menu item" icon="TimePluginIcons.TRACK_BUTTON_IDLE" />-->
-        <!--</group>-->
-        <!-- Add your actions here -->
-        <action id="Myplugin.Textboxes" class="rip.faith_in_humanity.time.ui.TimeMenuHandler" text="Text _Boxes"
+        <action id="Myplugin.Textboxes" class="com.github.reallive.idea.timetrack.ui.TimeMenuHandler"
+                text="Toggl Time Tracking"
                 description="A test menu item" icon="TimePluginIcons.TRACK_BUTTON_IDLE">
             <add-to-group group-id="MainToolBar" anchor="before" relative-to-action="ChooseRunConfiguration"/>
         </action>
     </actions>
     <application-components>
-        <!-- Add your application components here -->
         <component>
-            <implementation-class>rip.faith_in_humanity.time.TimeRegistration</implementation-class>
+            <implementation-class>com.github.reallive.idea.timetrack.TogglPlugIn</implementation-class>
         </component>
-        <!--<component>-->
-            <!--<implementation-class>rip.faith_in_humanity.time.ui.TimeConfigurator</implementation-class>-->
-        <!--</component>-->
     </application-components>
 </idea-plugin>

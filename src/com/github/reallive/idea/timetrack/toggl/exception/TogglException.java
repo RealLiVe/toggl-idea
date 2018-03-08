@@ -1,4 +1,4 @@
-package rip.faith_in_humanity.time.toggl.exception;
+package com.github.reallive.idea.timetrack.toggl.exception;
 
 public class TogglException extends Exception {
     public TogglException() {

@@ -1,4 +1,4 @@
-package rip.faith_in_humanity.time.ui;
+package com.github.reallive.idea.timetrack.ui;
 
 import com.intellij.openapi.util.Comparing;
 
@@ -18,15 +18,16 @@ public class TogglConfGUI {
         return rootPanel;
     }
 
-    public boolean isModified(){
+    public boolean isModified() {
         return !Comparing.equal(apiKey.getText(), configState.apiKey);
     }
 
-    public void apply(){
+    public String apply() {
         configState.apiKey = apiKey.getText();
+        return configState.apiKey;
     }
 
-    public TogglConfGUI init(){
+    public TogglConfGUI init() {
         apiKey.setText(configState.apiKey);
         return this;
     }

@@ -1,4 +1,4 @@
-package rip.faith_in_humanity.time.toggl.utils;
+package com.github.reallive.idea.timetrack.toggl.utils;
 
 public class Response<T> {
     private int code;

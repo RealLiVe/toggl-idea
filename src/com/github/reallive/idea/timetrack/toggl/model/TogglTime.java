@@ -1,48 +1,47 @@
-package rip.faith_in_humanity.time.toggl.model;
+package com.github.reallive.idea.timetrack.toggl.model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.sun.xml.internal.ws.developer.Serialization;
 
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TogglTimeEntry {
+public class TogglTime {
+    @SerializedName("pid")
+    private Long project;
+
     @SerializedName("id")
-    protected long id;
+    private Long id;
 
     @SerializedName("wid")
-    protected int workspaceId;
+    private Integer workspaceId;
 
     @SerializedName("start")
-    @Expose(serialize = false, deserialize = true)
-    protected ZonedDateTime start;
+    private ZonedDateTime start;
 
     @SerializedName("stop")
-    @Expose(serialize = false, deserialize = true)
-    protected ZonedDateTime end;
+    private ZonedDateTime end;
 
     @SerializedName("duration")
-    protected long duration;
+    private Long duration;
 
     @SerializedName("description")
-    protected String description;
+    private String description;
 
     @SerializedName("tags")
-    protected List<String> tags = new LinkedList<>();
+    private List<String> tags = new LinkedList<>();
 
     @SerializedName("created_with")
-    protected String createdWith = "toggl-idea";
-    public TogglTimeEntry(int workspaceId, ZonedDateTime start, ZonedDateTime end, String description) {
-        this.workspaceId = workspaceId;
+    private String createdWith = "toggl-idea";
+
+    public TogglTime(int workspaceId, ZonedDateTime start, ZonedDateTime end, String description) {
+        this.workspaceId = workspaceId <= 0 ? null : workspaceId;
         this.start = start;
         this.end = end;
         this.description = description;
     }
 
-    public TogglTimeEntry(int workspaceId, String description) {
+    public TogglTime(int workspaceId, String description) {
         this.workspaceId = workspaceId;
         this.description = description;
     }
@@ -109,5 +108,21 @@ public class TogglTimeEntry {
 
     public void setCreatedWith(String createdWith) {
         this.createdWith = createdWith;
+    }
+
+    @Override
+    public String toString() {
+        return "TogglTime{" +
+                "description='" + description + '\'' +
+                '}';
+    }
+
+    public Long getProject() {
+        return project;
+    }
+
+    public TogglTime setProject(Long project) {
+        this.project = project;
+        return this;
     }
 }

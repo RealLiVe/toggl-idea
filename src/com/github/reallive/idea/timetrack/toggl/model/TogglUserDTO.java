@@ -1,6 +1,6 @@
-package rip.faith_in_humanity.time.toggl.model;
+package com.github.reallive.idea.timetrack.toggl.model;
 
-public class TogglSession {
+public class TogglUserDTO {
     private long since;
     private TogglUser data;
 

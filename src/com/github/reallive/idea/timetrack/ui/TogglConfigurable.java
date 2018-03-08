@@ -1,5 +1,6 @@
-package rip.faith_in_humanity.time.ui;
+package com.github.reallive.idea.timetrack.ui;
 
+import com.github.reallive.idea.timetrack.TogglPlugIn;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.options.SearchableConfigurable;
 import org.jetbrains.annotations.Nls;
@@ -38,7 +39,7 @@ public class TogglConfigurable implements SearchableConfigurable {
 
     @Override
     public void apply() throws ConfigurationException {
-        togglConfGUI.apply();
+        TogglPlugIn.INSTANCE.update(togglConfGUI.apply());
     }
 
     @Override

@@ -1,4 +1,4 @@
-package rip.faith_in_humanity.time.ui;
+package com.github.reallive.idea.timetrack.ui;
 
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
