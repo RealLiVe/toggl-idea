@@ -28,6 +28,7 @@ Suggestions, problems and bugs should be placed in the issue tracker.
 - Idle detection is not built-in. However, other existing solutions can provide that. It should be no problem if you use the Browser extension provided by Toggl and the Plug-In. 
 - It only uses the default workspace. 
 - There is no view in IntelliJ which shows the tracked time. 
+- You can simultaneously open multiple projects. However, you should not run intellij with this extension on different machines.  
 
 ### Licence
 MIT. 
