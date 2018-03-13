@@ -101,8 +101,7 @@ public class TogglPlugIn implements ApplicationComponent {
             LocalTask activeTask = TaskManager.getManager(project).getActiveTask();
             TogglTime togglTime = toggl4J.get();
             if (togglTime != null) {
-                String summary = activeTask.getPresentableId() + ": " + activeTask.getSummary();
-                logger.info(activeTask.getPresentableName());
+                String summary = activeTask.getPresentableName();
                 if ("".equalsIgnoreCase(summary) || summary.equalsIgnoreCase("Default")
                         || summary.equalsIgnoreCase("Default task")) {
                     summary = "No ticket (" + project.getName() + ")";
