@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.time.ZonedDateTime;
 import java.util.Base64;
 
@@ -130,7 +131,7 @@ public class SimpleIOTemplate implements Closeable {
         connection.setDoOutput(true);
         addHeader("Content-Type", "application/json");
         try {
-            connection.getOutputStream().write(gson.toJson(sendObj, sendObj.getClass()).getBytes());
+            connection.getOutputStream().write(gson.toJson(sendObj, sendObj.getClass()).getBytes(Charset.forName("UTF-8")));
             if (connection.getResponseCode() > 299) {
                 logger.error(url.toString() + " responded with " + connection.getResponseCode()
                         + ": " + IOUtils.toString(connection.getErrorStream()));
@@ -149,7 +150,7 @@ public class SimpleIOTemplate implements Closeable {
         connection.setDoOutput(true);
         addHeader("Content-Type", "application/json");
         try {
-            connection.getOutputStream().write(object.toString().getBytes());
+            connection.getOutputStream().write(object.toString().getBytes(Charset.forName("UTF-8")));
             if (connection.getResponseCode() > 299) {
                 System.err.println(IOUtils.toString(connection.getErrorStream()));
             }
