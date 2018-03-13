@@ -25,7 +25,7 @@ public class Toggl4J {
     private long lastProjectSync = Long.MIN_VALUE;
 
     public synchronized TogglTime startEntry(String project, String description) {
-        if(connected) {
+        if (connected) {
             refresh(false);
             if (!projectMap.containsKey(project)) {
                 createProject(project);
@@ -120,7 +120,7 @@ public class Toggl4J {
     }
 
     public synchronized TogglProject createProject(String projectName) {
-        if(connected) {
+        if (connected) {
             TogglProject project = new TogglProject((long) workspaceId, projectName);
             Response<TogglProjectDTO> projectDTOResponse = new SimpleIOTemplate(TOGGL_ENDPOINT + "/projects", SimpleIOTemplate.RequestMethod.POST)
                     .addAuth(apiToken, "api_token").send(new TogglProjectDTO(project), TogglProjectDTO.class);
