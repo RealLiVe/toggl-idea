@@ -1,3 +1,6 @@
+# Note
+This plug-in is currently neither functional nor maintained. 
+
 # toggl-idea
 This plug-in for IntelliJ IDEA integrates the Toggl Time Tracker in the IDE in a non-annoying way. 
 
